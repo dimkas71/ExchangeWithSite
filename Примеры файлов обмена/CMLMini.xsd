@@ -1,0 +1,39 @@
+﻿<xs:schema xmlns:tns="http://www.test-cml.org" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.test-cml.org" attributeFormDefault="unqualified" elementFormDefault="qualified">
+	<xs:element name="Классификатор"/>
+	<xs:complexType name="Группа">
+		<xs:sequence>
+			<xs:element name="Ид" type="tns:ИдентификаторГлобальныйТип"/>
+			<xs:element name="Наименование" type="tns:НаименованиеТип"/>
+			<xs:element name="Группы" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Группа" type="tns:Группа" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ИдентификаторГлобальныйТип">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="40"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Классификатор">
+		<xs:sequence>
+			<xs:element name="Ид" type="tns:ИдентификаторГлобальныйТип"/>
+			<xs:element name="Наименование" type="tns:НаименованиеТип"/>
+			<xs:element name="Группы" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Группа" type="tns:Группа" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="НаименованиеТип">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="250"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
